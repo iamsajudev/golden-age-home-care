@@ -1,26 +1,239 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ============================================
+   GOLDEN Age — Design Tokens
+   ============================================ */
+@theme {
+  /* --- Brand Colors: Warm, Sunlit, Trustworthy --- */
+  --color-sun-50: #fffbf0;
+  --color-sun-100: #fef3d7;
+  --color-sun-200: #fce4ab;
+  --color-sun-300: #f9cf74;
+  --color-sun-400: #f5b73d;
+  --color-sun-500: #eb9c1b;
+  /* primary */
+  --color-sun-600: #d17d13;
+  --color-sun-700: #ad5f13;
+  --color-sun-800: #8c4a17;
+  --color-sun-900: #743d17;
+
+  /* --- Warm Neutrals (replaces cold grays) --- */
+  --color-sand-50: #faf9f6;
+  --color-sand-100: #f3f1ea;
+  --color-sand-200: #e5e1d4;
+  --color-sand-300: #cfc8b3;
+  --color-sand-400: #b3a88b;
+  --color-sand-500: #9c8f6c;
+  --color-sand-600: #857656;
+  --color-sand-700: #6b5e46;
+  --color-sand-800: #574c3c;
+  --color-sand-900: #3d3529;
+
+  /* --- Accent: Sage green for "care/health" --- */
+  --color-sage-50: #f4f7f2;
+  --color-sage-100: #e6ede1;
+  --color-sage-200: #cddcc3;
+  --color-sage-300: #a7c096;
+  --color-sage-400: #7fa268;
+  --color-sage-500: #5f8449;
+  --color-sage-600: #4a6a38;
+  --color-sage-700: #3c552e;
+  --color-sage-800: #324527;
+  --color-sage-900: #2a3a22;
+
+  /* --- Typography --- */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-fraunces), Georgia, serif;
+
+  /* --- Radius --- */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+
+  /* --- Shadows (warm-toned) --- */
+  --shadow-soft: 0 1px 2px 0 rgb(61 53 41 / 0.04), 0 4px 12px -2px rgb(61 53 41 / 0.06);
+  --shadow-card: 0 2px 4px -1px rgb(61 53 41 / 0.06), 0 8px 24px -4px rgb(61 53 41 / 0.08);
+  --shadow-lift: 0 4px 8px -2px rgb(61 53 41 / 0.08), 0 16px 40px -8px rgb(61 53 41 / 0.12);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ============================================
+   Base Layer
+   ============================================ */
+@layer base {
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  *,
+  *::before,
+  *::after {
+    border-color: var(--color-sand-200);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-sand-50);
+    color: var(--color-sand-900);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--color-sand-900);
+  }
+
+  /* Accessibility: strong focus rings everywhere */
+  :focus-visible {
+    outline: 2px solid var(--color-sun-500);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ============================================
+   Accessibility Toolbar Overrides
+   ============================================ */
+html.a11y-large-text {
+  font-size: 120%;
+}
+
+html.a11y-high-contrast {
+  --color-sand-50: #ffffff;
+  --color-sand-900: #000000;
+  --color-sun-500: #b45309;
+}
+
+html.a11y-high-contrast body {
+  background: #ffffff;
+  color: #000000;
+}
+
+html.a11y-high-contrast a,
+html.a11y-high-contrast button {
+  text-decoration-thickness: 2px;
+}
+
+html.a11y-dyslexia body,
+html.a11y-dyslexia h1,
+html.a11y-dyslexia h2,
+html.a11y-dyslexia h3 {
+  font-family: "Comic Sans MS", "Verdana", sans-serif;
+  letter-spacing: 0.03em;
+  word-spacing: 0.15em;
+}
+
+/* ============================================
+   Utilities
+   ============================================ */
+@utility container-page {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  max-width: 80rem;
+
+  @media (min-width: 768px) {
+    padding-inline: 2rem;
+  }
+
+  @media (min-width: 1280px) {
+    padding-inline: 3rem;
+  }
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility text-pretty {
+  text-wrap: pretty;
+}
+
+
+/* Custom Style Start */
+/* ─────────────────────────────────────────────
+   CUSTOM ANIMATIONS — for hero & interactive elements
+   ───────────────────────────────────────────── */
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  60%, 100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes ping-slow {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  75%, 100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+@theme {
+  --animate-fade-in-up: fade-in-up 0.8s ease-out both;
+  --animate-float: float 3s ease-in-out infinite;
+  --animate-float-delayed: float 3s ease-in-out 1.5s infinite;
+  --animate-shimmer: shimmer 4s ease-in-out infinite;
+  --animate-spin-slow: spin-slow 12s linear infinite;
+  --animate-ping-slow: ping-slow 2.5s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
