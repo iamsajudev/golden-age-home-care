@@ -157,7 +157,7 @@ function ServiceCard({
                             aria-hidden
                             className="absolute inset-0 rounded-2xl bg-red-400/40 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-hover:animate-ping-slow"
                         />
-                        <Icon className="relative h-6 w-6" strokeWidth={2} />
+                        <Icon className="relative h-6 w-6" />
                     </span>
 
                     {/* Index counter */}
