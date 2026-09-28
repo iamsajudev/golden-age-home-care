@@ -150,7 +150,7 @@ export function HomeServices() {
         className="pointer-events-none absolute -left-40 top-40 h-96 w-96 rounded-full bg-red-100/40 blur-3xl"
       />
 
-      <div className="relative">
+      <div className="relative -mt-20">
         {/* ═══════════ HEADER ROW ═══════════ */}
         <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">

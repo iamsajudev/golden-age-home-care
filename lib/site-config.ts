@@ -1,4 +1,30 @@
 // lib/site-config.ts
+
+/* ─────────────────────────────────────────────
+   TYPES
+   ───────────────────────────────────────────── */
+
+export type NavChild = {
+  href: string;
+  label: string;
+  description?: string; // optional — useful if you later add mega-menu descriptions
+};
+
+export type NavItem = {
+  href: string;
+  label: string;
+  children?: NavChild[];
+};
+
+export type Branch = {
+  name: string;
+  region: string;
+};
+
+/* ─────────────────────────────────────────────
+   CONFIG
+   ───────────────────────────────────────────── */
+
 export const siteConfig = {
   name: "Golden Age Home Care",
   shortName: "Golden Age",
@@ -20,14 +46,23 @@ export const siteConfig = {
     { href: "/", label: "Home" },
     { href: "/services", label: "Services" },
     { href: "/resource", label: "Resource" },
-    { href: "/careers", label: "Careers" },
-    { href: "/about", label: "About" },
+    { href: "/branches", label: "Branches" },
+    {
+      href: "/about",
+      label: "About",
+      children: [
+        { href: "/about", label: "About Us" },
+        { href: "/careers", label: "Careers" },
+        { href: "/video-gallery", label: "Video Gallery" },
+      ],
+    },
+    { href: "/blogs", label: "Blogs" },
     { href: "/contact", label: "Contact" },
-  ],
+  ] as NavItem[],
 
   /* ── Hours ── */
   hours: {
-    weekdays: "Monday – Friday: 9:00 AM – 6:00 PM",
+    weekdays: "Monday–Friday: 9:00 AM–6:00 PM",
     saturday: "Saturday: By appointment",
     sunday: "Sunday: Emergency line only",
   },
@@ -40,7 +75,7 @@ export const siteConfig = {
     { name: "Staten Island", region: "Richmond County" },
     { name: "Manhattan", region: "New York County" },
     { name: "Westchester", region: "Westchester County" },
-  ],
+  ] as Branch[],
 
   /* ── Social ── */
   social: {
@@ -49,5 +84,8 @@ export const siteConfig = {
   },
 } as const;
 
-export type NavItem = (typeof siteConfig.nav)[number];
-export type Branch = (typeof siteConfig.branches)[number];
+/* ─────────────────────────────────────────────
+   OPTIONAL CONVENIENCE EXPORTS
+   ───────────────────────────────────────────── */
+
+export type SiteConfig = typeof siteConfig;

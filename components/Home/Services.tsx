@@ -10,6 +10,7 @@ import {
     ArrowUpRight,
 } from "lucide-react";
 import { Section, SectionHeading } from "@/components/ui/section";
+import { Button } from "../ui/button";
 
 /* ─────────────────────────────────────────────
    DATA
@@ -87,7 +88,7 @@ export function Services() {
                 />
 
                 <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-7">
-                    {services.map((service, i) => (
+                    {services.slice(0, 3).map((service, i) => (
                         <ServiceCard
                             key={service.title}
                             index={i}
@@ -95,6 +96,17 @@ export function Services() {
                             {...service}
                         />
                     ))}
+                </div>
+                <div className="mt-10 flex justify-center">
+                    <Link href="/contact">
+                        <Button
+                            size="lg"
+                            className="bg-red-600 text-white shadow-card hover:bg-red-700 hover:shadow-lift"
+                        >
+                            View More
+                            <ArrowUpRight className="h-4 w-4" />
+                        </Button>
+                    </Link>
                 </div>
             </div>
         </Section>

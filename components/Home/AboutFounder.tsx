@@ -30,7 +30,7 @@ export function AboutFounder() {
                     {/* Photo frame */}
                     <div className="relative aspect-[5/6] w-full overflow-hidden rounded-3xl shadow-lift ring-1 ring-sand-200">
                         <Image
-                            src="/images/founder.jpg"
+                            src="/images/images.jpg"
                             alt="Founder of Golden Age Home Care"
                             fill
                             sizes="(max-width: 1024px) 100vw, 50vw"
