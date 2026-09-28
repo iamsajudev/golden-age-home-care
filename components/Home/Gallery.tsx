@@ -56,7 +56,7 @@ export function Gallery() {
 
   return (
     <>
-      <Section id="gallery" className="relative overflow-hidden bg-sand-50/60 pb-24 pt-0">
+      <Section id="gallery" className="relative overflow-hidden bg-sand-50/60 pb-24 pt-0 -mt-20">
         <div className="relative mx-auto max-w-7xl px-4 ">
           {/* Header */}
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">

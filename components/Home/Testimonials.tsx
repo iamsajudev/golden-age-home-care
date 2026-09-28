@@ -37,6 +37,30 @@ const testimonials = [
     initials: "CG",
     rating: 5,
   },
+  {
+    quote:
+      "Golden Age Home Care made it possible for us to provide quality in-home care for our mom and dad. Trustworthy, skilled and reliable caretakers. Our experience allows me to highly recommend them.",
+    author: "Client Family",
+    relation: "Family caregiver",
+    initials: "CF",
+    rating: 3,
+  },
+  {
+    quote:
+      "Golden Age Home has taken care of my aunt and my mother, both in their 90's. The aides are very caring and have become family. They continue to care for my 96-year-old mother who has Alzheimer's with patience and kindness.",
+    author: "Long-term Client Family",
+    relation: "Family of two clients",
+    initials: "LC",
+    rating: 5,
+  },
+  {
+    quote:
+      "Working for Golden Age Home Care is a pleasure. Like no other agency, the big boss makes sure her employees and clients get the best treatment possible. At Golden Age you will always be a priority.",
+    author: "Caregiver",
+    relation: "HHA team member",
+    initials: "CG",
+    rating: 5,
+  },
 ];
 
 const TOTAL = String(testimonials.length).padStart(2, "0");

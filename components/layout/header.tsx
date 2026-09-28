@@ -12,6 +12,7 @@ import {
   MapPin,
   Clock,
   ChevronDown,
+  User,
 } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import { Button } from "@/components/ui/button";
@@ -69,10 +70,10 @@ export function Header() {
     const childActive =
       "children" in item && Array.isArray(item.children)
         ? item.children.some(
-            (c) =>
-              pathname === c.href ||
-              pathname.startsWith(c.href + "/")
-          )
+          (c) =>
+            pathname === c.href ||
+            pathname.startsWith(c.href + "/")
+        )
         : false;
 
     return exact || childActive;
@@ -122,6 +123,10 @@ export function Header() {
               <Phone className="h-3 w-3" />
               {siteConfig.phone}
             </a>
+            <span className="hidden h-3 w-px bg-white/30 sm:inline-block" />
+            <Link href={"/login"} title="Login">
+              <User className="w-5 h-5" />
+            </Link>
           </div>
         </div>
       </div>

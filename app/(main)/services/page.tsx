@@ -161,7 +161,10 @@ export default function ServicesPage() {
                             description={service.description}
                             features={service.features}
                             slug={service.slug}
+                            image={service.image}
+                            imageAlt={service.title}
                             index={i}
+                            activeByDefault={[0, 5].includes(i)}   // ← first card only
                         />
                     ))}
                 </div>
