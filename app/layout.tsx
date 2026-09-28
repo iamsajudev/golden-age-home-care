@@ -90,7 +90,7 @@ export default function RootLayout({
       className={`${inter.variable} ${fraunces.variable}`}
       suppressHydrationWarning
     >
-      <body className="min-h-dvh flex flex-col bg-sand-50 font-sans text-sand-900 antialiased">
+      <body suppressHydrationWarning className="min-h-dvh flex flex-col bg-sand-50 font-sans text-sand-900 antialiased">
         {children}
       </body>
     </html>
