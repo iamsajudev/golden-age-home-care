@@ -1,10 +1,10 @@
 // app/(main)/contact/page.tsx
 import type { Metadata } from "next";
 import { PageHero } from "@/components/layout/PageHero";
-import { ContactForm } from "@/components/Contact/ContactForm";
-import { ContactInfo } from "@/components/Contact/ContactInfo";
-import { ContactMap } from "@/components/Contact/ContactMap";
 import { siteConfig } from "@/lib/site-config";
+import { ContactForm } from "@/components/contact/ContactForm";
+import { ContactInfo } from "@/components/contact/ContactInfo";
+import { ContactMap } from "@/components/contact/ContactMap";
 
 export const metadata: Metadata = {
     title: "Contact Us",
